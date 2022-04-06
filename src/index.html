@@ -8,10 +8,26 @@
   <title>Vanilla JavaScript App</title>
 </head>
 
-<body>
+<body id="body">
   <main>
-    <h1>Vanilla JavaScript App</h1>
+    <h1 id="h1"></h1>
+
+    <script>
+      (async function(){
+        const { text } = await (await fetch(`/api/buttonTrigger`)).json();
+        // document.getElementById('h1').append(text);
+        document.querySelector('#h1').textContent = text;
+      }())
+    </script>
   </main>
 </body>
 
 </html>
+
+<script>
+  function changeColor(r, g, b) {
+    var element = document.getElementById('body');
+    element.style.backgroundColor = "rgb(" + r + "," + g + "," + b +")";
+    element.style.color = "rgb(" + (255-r) + "," + (255-g) + "," + (255-b) +")";
+  }
+</script>
