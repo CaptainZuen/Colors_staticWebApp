@@ -13,19 +13,17 @@
     <h1 id="h1">hoi</h1>
 
     <script>
-      (async function(){
-        const { r, g, b } = await (await fetch(`/api/buttonTrigger`)).json();
-        // document.getElementById('h1').append(text);
-        // document.querySelector('#h1').textContent = text;
-        changeColor(r, g, b)
+      function changeColor(r, g, b) {
+        var element = document.getElementById('body');
+        element.style.backgroundColor = "rgb(" + r + "," + g + "," + b +")";
+        element.style.color = "rgb(" + (255-r) + "," + (255-g) + "," + (255-b) +")";
+      }
 
-        function changeColor(r, g, b) {
-          var element = document.getElementById('body');
-          element.style.backgroundColor = "rgb(" + r + "," + g + "," + b +")";
-          element.style.color = "rgb(" + (255-r) + "," + (255-g) + "," + (255-b) +")";
-        }
-      }())
-      
+      async function getColor(){
+        const { r, g, b } = await (await fetch(`/api/buttonTrigger`)).json();
+        changeColor(r, g, b)
+      }
+      setInterval(getColor, 1000);
     </script>
   </main>
 </body>
