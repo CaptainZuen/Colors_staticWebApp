@@ -10,7 +10,8 @@
 
 <body id="body">
   <main>
-    <h1 id="h1">hoi</h1>
+    <h1 id="h1">hex</h1>
+    <h2 id="h2">dec</h2>
 
     <script>
       function changeColor(r, g, b) {
@@ -29,6 +30,7 @@
 
         // context.log(color + " " + r + g + b);
         document.getElementById("h1").innerHTML = "#" + color;
+        document.getElementById("h2").innerHTML = r + ' ' + g + ' ' + b;
       }
       setInterval(getColor, 1000);
     </script>
