@@ -20,8 +20,15 @@
       }
 
       async function getColor(){
-        const { r, g, b } = await (await fetch(`/api/buttonTrigger`)).json();
+        const { color } = await (await fetch(`/api/buttonTrigger`)).json();
+        
+        let r = parseInt((color[0]+color[1]), 16);
+        let g = parseInt((color[2]+color[3]), 16);
+        let b = parseInt((color[4]+color[5]), 16);
         changeColor(r, g, b)
+
+        // context.log(color + " " + r + g + b);
+        document.getElementById("h1").innerHTML = "#" + color;
       }
       setInterval(getColor, 1000);
     </script>
