@@ -15,32 +15,32 @@
 
     <script>
       function changeColor(r, g, b) {
+        // Zet de achtergrondkleur van de "body" (=hele website) als de "rgb" kleur
+        // Zet de textkleur als de exact omgekeerde van de "rgb" (=255-r/g/b)
         var element = document.getElementById('body');
         element.style.backgroundColor = "rgb(" + r + "," + g + "," + b +")";
         element.style.color = "rgb(" + (255-r) + "," + (255-g) + "," + (255-b) +")";
       }
 
       async function getColor(){
+        // Haal de kleur op van de API, als string
         const { color } = await (await fetch(`/api/buttonTrigger`)).json();
         
+        // Zet de hex kleurcode om in decimale r/g/b
         let r = parseInt((color[0]+color[1]), 16);
         let g = parseInt((color[2]+color[3]), 16);
         let b = parseInt((color[4]+color[5]), 16);
         changeColor(r, g, b)
 
+        // Zet de kleur als hex bij h1 en de titel en als decimaal bij de h2
         document.getElementById("h1").innerHTML = "#" + color;
         document.getElementById("title").innerHTML = "#" + color;
         document.getElementById("h2").innerHTML = r + ' ' + g + ' ' + b;
       }
+      // Roep getColor elke seconde aan om de kleur te updaten
       setInterval(getColor, 1000);
     </script>
   </main>
 </body>
 
 </html>
-
-<script>
-
-  
-
-</script>

@@ -1,16 +1,10 @@
 module.exports = async function (context, req) {
-    // context.log('JavaScript HTTP trigger function processed a request.');
 
-    // const name = (req.query.name || (req.body && req.body.name));
-    // const responseMessage = name
-    //     ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-    //     : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
-
+    // Haal de "color" variabele op
     const color = process.env.color;
 
-
+    // Zet de "color" in een json als output
     context.res.json({
-        // status: 200, /* Defaults to 200 */
         color: color
     })
 }
